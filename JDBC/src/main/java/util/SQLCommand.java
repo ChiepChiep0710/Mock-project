@@ -1,0 +1,14 @@
+package util;
+
+public class SQLCommand {
+    public static final String SELECT_ALL_ADDRESS = "SELECT * FROM ADDRESS";
+    public static final String ADDRESS_INSERT = "INSERT INTO ADDRESS(CITY, DISTRICT, SUB_DISTRICT, POSTAL_CODE, DELIVERY_FEE) VALUES(?, ?, ?, ?, ?)";
+    public static final String UPDATE_ADDRESS = "UPDATE ADDRESS SET CITY = ?, DISTRICT = ?, SUB_DISTRICT = ?,POSTAL_CODE = ?, DELIVERY_FEE = ? WHERE ADDRESS_ID = ?";
+    public static final String DELETE_ADDRESS = "DELETE FROM ADDRESS WHERE ADDRESS_ID = ?";
+    public static final String CUSTOMER_INSERT = "INSERT INTO CUSTOMER(FULL_NAME, EMAIL, PHONE_NUMBER, ADDRESS_ID) VALUES(?, ?, ?, ?)";
+    public static final String CUSTOMER_UPDATE = "UPDATE CUSTOMER SET FULL_NAME = ?, EMAIL = ?, PHONE_NUMBER = ?, ADDRESS_ID = ? WHERE CUSTOMER_ID = ?";
+
+    public static final String CUSTOMER_COUNT_ADDRESS = "SELECT COUNT(*) FROM CUSTOMER GROUP BY ADDRESS_ID HAVING ADDRESS_ID = ?";
+
+    public static final String CUSTOMER_DELETE = "DELETE FROM CUSTOMER WHERE CUSTOMER_ID = ?";
+}
