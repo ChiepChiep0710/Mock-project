@@ -14,11 +14,15 @@ public class DiscountDBUtil {
 
     public Connection getConnection(){
         try{
-            String url = "jdbc:mysql://localhost:3306/MOCK_PROJECT";
-            String username = "root";
-            String password = "020120002099";
+            String url =  "jdbc:sqlserver://sql.bsite.net\\MSSQL2016;"
+                    + "database=hieunm69_;"
+                    + "user=hieunm69_;"
+                    + "password=Qwertyuiop[;"
+                    + "encrypt=true;"
+                    + "trustServerCertificate=true;"
+                    + "loginTimeout=30;";;
 
-            return DriverManager.getConnection(url, username, password);
+            return DriverManager.getConnection(url);
         }catch (Exception e){
             e.printStackTrace();
             return null;

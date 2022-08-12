@@ -22,8 +22,7 @@ public class DiscountMain {
             out.println("1. Add a new Discount");
             out.println("2. Show all Discounts");
             out.println("3. Update Discounts");
-            out.println("4. Search Discount by Id");
-            out.println("5. Remove Discount");
+            out.println("4. Remove Discount");
             out.println("0. Exit");
             out.println("Please choose: ");
             choice = s.nextInt();
@@ -47,8 +46,6 @@ public class DiscountMain {
                     out.println("UPDATE DISCOUNT " + (res ? "SUCCESS" : "FAIL"));
                     break;
                 case 4:
-                    break;
-                case 5:
                     out.println("Enter the ID to delete: ");
                     id = s.nextInt();
                     res = discountService.deleteDiscount(id);
