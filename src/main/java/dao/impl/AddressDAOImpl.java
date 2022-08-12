@@ -28,10 +28,6 @@ public class AddressDAOImpl implements AddressDAO {
         return 0;
     }
 
-    private void a(){
-
-    }
-
     @Override
     public int update(Address address) {
         try(Connection connection = DBUtil.getInstance().getConnection()){
