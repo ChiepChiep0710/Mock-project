@@ -2,6 +2,7 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class DBUtil {
     private static DBUtil instance;
@@ -25,5 +26,26 @@ public class DBUtil {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public PreparedStatement statementBindind(PreparedStatement preparedStatement, Object ... args) {
+        try{
+            for (int i = 0; i < args.length; i++) {
+                if (args[i] instanceof String){
+                    preparedStatement.setString(i+1,(String) args[i]);
+                } else if (args[i] instanceof Integer) {
+                    preparedStatement.setInt(i+1,(Integer) args[i]);
+                }else if (args[i] instanceof Double) {
+                    preparedStatement.setDouble(i+1,(double) args[i]);
+                }else{
+                    System.out.println("MISSING TYPE: " + args[i].getClass());
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+
+            return null;
+        }
+        return preparedStatement;
     }
 }
