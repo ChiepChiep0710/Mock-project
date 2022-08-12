@@ -18,7 +18,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         try(Connection connection = DBUtil.getInstance().getConnection();){
             PreparedStatement preparedStatement = connection.prepareStatement(CustomerSQLCommand.CUSTOMER_INSERT, Statement.RETURN_GENERATED_KEYS);
             preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement, customer.getFullName(),
-                                customer.getEmail(), customer.getPhoneNumber(), customer.getAddressId());
+                                customer.getEmail(), customer.getPhoneNumber());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()){
@@ -59,7 +59,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         try(Connection connection = DBUtil.getInstance().getConnection();){
             PreparedStatement preparedStatement = connection.prepareStatement(CustomerSQLCommand.CUSTOMER_UPDATE);
             preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement, customer.getFullName(),
-                    customer.getEmail(), customer.getPhoneNumber(), customer.getAddressId(), customer.getId());
+                    customer.getEmail(), customer.getPhoneNumber(), customer.getId());
             if (preparedStatement != null){
                 return preparedStatement.executeUpdate();
             }

@@ -32,24 +32,28 @@ public class CustomerServiceImpl implements CustomerService {
             return false;
         }
         Customer customer = customerFilter.get(0);
-        System.out.print("Enter full name: ");
-        customer.setFullName(scanner.nextLine());
-        System.out.print("Enter email: ");
-        customer.setEmail(CustomerValidator.getInstance().validateEmail());
-        System.out.print("Enter phone number: ");
-        customer.setPhoneNumber(CustomerValidator.getInstance().validatePhone());
-//        System.out.println("Do you want to change address?(y/n)");
-//        String choose = scanner.nextLine();
-//        if(choose.equalsIgnoreCase("y")){
-//            Address address = new Address();
-//            address.input();
-//            customer.setAddressId(Validator.getInstance().checkAddress(address));
-//            if(customer.getAddressId() != 0){
-//                addressDAO.update(address);
-//            } else {
-//                customer.setAddressId(addressDAO.save(address));
-//            }
-//        }
+        String choose;
+        System.out.print("Do you want to change full name?(y/n)");
+        choose = scanner.nextLine();
+        if(choose.equalsIgnoreCase("y")){
+            System.out.print("Enter full name: ");
+            customer.setFullName(scanner.nextLine());
+        }
+
+        System.out.print("Do you want to change email?(y/n)");
+        choose = scanner.nextLine();
+        if(choose.equalsIgnoreCase("y")){
+            System.out.print("Enter email: ");
+            customer.setEmail(CustomerValidator.getInstance().validateEmail());
+        }
+
+        System.out.print("Do you want to change phone number?(y/n)");
+        choose = scanner.nextLine();
+        if(choose.equalsIgnoreCase("y")){
+            System.out.print("Enter phone number: ");
+            customer.setPhoneNumber(CustomerValidator.getInstance().validatePhone());
+        }
+
         return customerDAO.update(customer) > 0;
     }
 
