@@ -17,7 +17,7 @@ public class AddressDAOImpl implements AddressDAO {
     public int save(Address address) {
         try(Connection connection = DBUtil.getInstance().getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(AddressSQLCommand.INSERT_ADDRESS);
-            preparedStatement = DBUtil.getInstance().statementBindind(preparedStatement,address.getCity(),
+            preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement,address.getCity(),
                     address.getDistrict(),address.getSub_district(),address.getPostal_code(),address.getDelivery_fee());
 
             return preparedStatement.executeUpdate();
@@ -33,7 +33,7 @@ public class AddressDAOImpl implements AddressDAO {
         try(Connection connection = DBUtil.getInstance().getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(AddressSQLCommand.UPDATE_ADDRESS);
 
-            preparedStatement = DBUtil.getInstance().statementBindind(preparedStatement,address.getCity(),
+            preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement,address.getCity(),
                     address.getDistrict(),address.getSub_district(),address.getPostal_code(),address.getDelivery_fee(),address.getId());
 
             return preparedStatement.executeUpdate();
@@ -47,7 +47,7 @@ public class AddressDAOImpl implements AddressDAO {
     public int delete(Address address) {
         try(Connection connection = DBUtil.getInstance().getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(AddressSQLCommand.DELETE_ADDRESS);
-            preparedStatement = DBUtil.getInstance().statementBindind(preparedStatement,address.getId());
+            preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement,address.getId());
             return preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
