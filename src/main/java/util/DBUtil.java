@@ -20,7 +20,7 @@ public class DBUtil {
                     + "password=Qwertyuiop[;"
                     + "encrypt=true;"
                     + "trustServerCertificate=true;"
-                    + "loginTimeout=30;";;
+                    + "loginTimeout=30;";
 
             return DriverManager.getConnection(url);
         } catch (Exception e) {
@@ -51,4 +51,7 @@ public class DBUtil {
 
         return preparedStatement;
     }
+
+
 }
+
