@@ -8,36 +8,30 @@ import java.util.Scanner;
 public class CustomerController {
     private static Scanner scanner = new Scanner(System.in);
     private static final CustomerService customerService = new CustomerServiceImpl();
-    public static void main(String[] args) {
+    public static void customerController(){
         int menu;
-        while(true){
+        boolean exit = true;
+        while(exit){
             menu = showMenu();
             switch (menu){
                 case 1:{
-                    boolean result = customerService.save();
-                    System.out.println("Add a new customer " + (result ? "success." : "fail."));
+
                     break;
                 }
                 case 2:{
-                    System.out.print("Enter customer id:");
-                    int id = scanner.nextInt();
-                    boolean result = customerService.update(id);
-                    System.out.println("Update customer " + (result ? "success." : "fail."));
+
                     break;
                 }
                 case 3:{
-                    System.out.print("Enter customer id:");
-                    int id = scanner.nextInt();
-                    boolean result = customerService.delete(id);
-                    System.out.println("Delete customer " + (result ? "success." : "fail."));
+
                     break;
                 }
                 case 4:{
-                    customerService.findAll().forEach(System.out::println);
+
                     break;
                 }
                 case 5:{
-                    System.exit(0);
+                    exit = false;
                     break;
                 }
                 default:{
@@ -49,15 +43,15 @@ public class CustomerController {
     }
 
     public static int showMenu(){
-        System.out.println("===============MENU====================");
+        System.out.println("==========CUSTOMER MANAGEMENT=============");
         System.out.println("1. Add a new customer");
         System.out.println("2. Update a customer by customer id");
         System.out.println("3. Delete a customer by customer id");
-        System.out.println("4. Find all customer");
+        System.out.println("4. Show all customer");
         System.out.println("5. Exit");
-        System.out.print("Enter your choose: ");
-        int choose = scanner.nextInt();
+        System.out.print("Your choice: ");
+        int choice = scanner.nextInt();
         scanner.nextLine();
-        return choose;
+        return choice;
     }
 }
