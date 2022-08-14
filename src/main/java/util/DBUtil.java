@@ -39,7 +39,7 @@ public class DBUtil {
                 } else if(args[i] instanceof Double){
                     preparedStatement.setDouble(i+1, (Double) args[i]);
                 } else if(args[i] instanceof Date){
-                    preparedStatement.setDate(i+1, (java.sql.Date) args[i]);
+                    preparedStatement.setDate(i+1, new java.sql.Date(((Date) args[i]).getTime()));
                 } else{
                     System.out.println("MISSING TYPE: " + args[i].getClass());
                 }

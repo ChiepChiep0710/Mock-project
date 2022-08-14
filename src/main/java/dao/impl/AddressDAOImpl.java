@@ -66,7 +66,7 @@ public class AddressDAOImpl implements AddressDAO {
 
             List<Address> addresses = new ArrayList<>();
             while (resultSet.next()) {
-                int id = resultSet.getInt("ID");
+                int id = resultSet.getInt("ADDRESS_ID");
                 String city = resultSet.getString("CITY");
                 String district = resultSet.getString("DISTRICT");
                 String sub_district = resultSet.getString("SUB_DISTRICT");
