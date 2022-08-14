@@ -10,7 +10,13 @@ import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
 
-    private OrderDAO orderDAO = new OrderDAOImpl();
+    private final OrderDAO orderDAO = new OrderDAOImpl();
+
+    @Override
+    public boolean create(Order order) {
+        return false;
+    }
+
     @Override
     public boolean save(Order order) {
         return orderDAO.save(order) > 0;

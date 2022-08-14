@@ -13,6 +13,8 @@ public interface AddressDAO {
 
     List<Address> findAll();
 
+    Address searchAddressByID(int id);
+
 
 
 }

@@ -7,5 +7,6 @@ public class AddressSQLCommand {
             " POSTAL_CODE = ?, DELIVERY_FEE = ? WHERE ADDRESS_ID = ?";
     public static final String DELETE_ADDRESS = "DELETE FROM ADDRESS WHERE ADDRESS_ID = ?";
 
+    public static final String SEARCH_ADDRESS_BY_ID = "SELECT * FROM ADDRESS WHERE ADDRESS_ID = ?";
 
 }
