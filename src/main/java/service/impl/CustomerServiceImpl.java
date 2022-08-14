@@ -72,6 +72,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer searchById(int customerId) {
+        List<Customer> customers = findAll();
+        List<Customer> customerFilter = customers.stream()
+                .filter(customer -> customer.getId() == customerId)
+                .collect(Collectors.toList());
+        if(customerFilter.size() == 0){
+            System.out.println("Customer does not exist!");
+            return new Customer();
+        }
+
+        return customerDAO.searchById(customerId);
+    }
+
+    @Override
     public List<Customer> findAll() {
         return customerDAO.findAll();
     }

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Customer;
 import service.CustomerService;
 import service.impl.CustomerServiceImpl;
 
@@ -15,22 +16,38 @@ public class CustomerController {
             menu = showMenu();
             switch (menu){
                 case 1:{
-
+                    customerService.save();
                     break;
                 }
                 case 2:{
-
+                    System.out.print("Enter customer id: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    boolean result = customerService.update(id);
+                    System.out.println("Update customer " + (result ? "success" : "fail"));
                     break;
                 }
                 case 3:{
-
+                    System.out.print("Enter customer id: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    boolean result = customerService.delete(id);
+                    System.out.println("Delete customer " + (result ? "success" : "fail"));
                     break;
                 }
                 case 4:{
-
+                    System.out.print("Enter customer id: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = customerService.searchById(id);
+                    System.out.println(customer.toString());
                     break;
                 }
                 case 5:{
+                    customerService.findAll().forEach(System.out::println);
+                    break;
+                }
+                case 6:{
                     exit = false;
                     break;
                 }
@@ -47,8 +64,9 @@ public class CustomerController {
         System.out.println("1. Add a new customer");
         System.out.println("2. Update a customer by customer id");
         System.out.println("3. Delete a customer by customer id");
-        System.out.println("4. Show all customer");
-        System.out.println("5. Exit");
+        System.out.println("4. Search customer by customer id");
+        System.out.println("5. Show all customer");
+        System.out.println("6. Exit");
         System.out.print("Your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine();

@@ -83,4 +83,26 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         return 0;
     }
+
+    @Override
+    public Customer searchById(int customerId) {
+        try (Connection connection = DBUtil.getInstance().getConnection();) {
+            PreparedStatement preparedStatement = connection.prepareStatement(CustomerSQLCommand.CUSTOMER_SEARCH);
+            preparedStatement = DBUtil.getInstance().statementBinding(preparedStatement, customerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Customer customer = new Customer();
+            while (resultSet.next()){
+                int id = resultSet.getInt("CUSTOMER_ID");
+                String fullName = resultSet.getString("FULL_NAME");
+                String email = resultSet.getString("EMAIL");
+                String phoneNumber = resultSet.getString("PHONE_NUMBER");
+                int addressId = resultSet.getInt("ADDRESS_ID");
+                customer =  new Customer(id, fullName, email, phoneNumber, addressId);
+            }
+            return customer;
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
